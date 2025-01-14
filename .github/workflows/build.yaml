@@ -1,52 +1,38 @@
-name: CI
+name: Deploy Vite React App
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
+  deploy:
+    runs-on: ubuntu-22.4
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
+      # 1. Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Use Node.js 23.6
+      # 2. Set up Node.js environment
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 23.6
+          node-version: 23 # Vite와 호환 가능한 Node.js 버전
 
-      - name: Cache node_modules
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm install
-        if: steps.cache.outputs.cache-hit != 'true'
 
+      # 4. Build the project
       - name: Build project
         run: npm run build
 
-      - name: Check build output
-        run: ls -la ./dist
-
-      - name: Reset Git State
-        run: |
-          git reset --hard
-          git clean -fdx
-
-      - uses: peaceiris/actions-gh-pages@v4
+      # 5. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./dist # Vite의 기본 빌드 출력 디렉토리
