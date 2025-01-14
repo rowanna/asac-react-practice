@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./assets/pages/Home";
 import UseReducerPage from "./assets/pages/UseReducerPage";
-import UseStatePage from "./assets/pages/UseStatePage";
+import ContextAPIPage from "./assets/pages/ContextAPIPage";
 
 import "./App.css";
 
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} /> {/* 메인 페이지 */}
         <Route path="/useReducerPage" element={<UseReducerPage />} />{" "}
-        <Route path="/useStatePage" element={<UseStatePage />} />{" "}
+        <Route path="/ContextAPIPage" element={<ContextAPIPage />} />{" "}
       </Routes>
     </Router>
   );
