@@ -5,9 +5,11 @@ import UseStatePage from "./assets/pages/UseStatePage";
 
 import "./App.css";
 
+const projectBasePath = "/asac-react-practice"; // 기본 경로를 변수로 정의
+
 function App() {
   return (
-    <Router>
+    <Router basename={projectBasePath}>
       <Routes>
         <Route path="/" element={<Home />} /> {/* 메인 페이지 */}
         <Route path="/useReducerPage" element={<UseReducerPage />} />{" "}
