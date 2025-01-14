@@ -54,4 +54,4 @@ jobs:
         with:
           # 이 GITHUB_TOKEN 환경변수는 기본적으로 주어지는 것으로 별도로 생성할 필요는 없다.
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
