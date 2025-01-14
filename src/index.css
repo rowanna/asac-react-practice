@@ -69,3 +69,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+#practiceBox {
+  background-color: rgb(182, 182, 182);
+  border-radius: 2%;
+  box-shadow: 6px 5px 17px #5c5a5a;
+}
+#practiceBox #resultBox {
+  display: flex;
+  height: 30%;
+  justify-content: space-around;
+  align-items: center;
+}
