@@ -1,0 +1,62 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-22.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 리포지토리 코드를 CI 서버로 내려받고, 해당 브랜치로 전환하는 액션
+      - uses: actions/checkout@v4
+		
+      # node.js 18 버전을 사용하도록 설정
+      - name: Use Node.js 23.6
+        uses: actions/setup-node@v3
+        with:
+          node-version: 23.6
+
+      # node_modules 폴더를 캐싱한다.
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          # package-lock.json 파일의 변경이 발생했을 경우 새로 캐싱될 수 있도록 한다.
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          # cache hit이 발생하지 않았을 경우, restore-keys 에 있는 것을 꺼낸다.
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+	  # 캐시 히트가 발생하지 않으면 npm install 명령을 실행한다.
+      # 단 기존의 restore-keys 캐시에 저장된 node_modules 기반으로
+      # 추가된 패키지만 설치하기 때문에, 아예 처음부터 node_modules 폴더를 생성하는 것보다
+      # 시간이 적게 걸린다.
+      - name: Install dependencies
+        run: npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+		
+      - name: Build project
+        run: npm run build
+
+      # 빌드된 파일들(./build)을 gh-pages 브랜치로 배포하는 작업. gh-pages의 원리에 대해선 후술
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          # 이 GITHUB_TOKEN 환경변수는 기본적으로 주어지는 것으로 별도로 생성할 필요는 없다.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
