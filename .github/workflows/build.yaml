@@ -23,7 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # 리포지토리 코드를 CI 서버로 내려받고, 해당 브랜치로 전환하는 액션
-      - uses: actions/checkout@v4	
+      - uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+          submodules: true
       # node.js 18 버전을 사용하도록 설정
       - name: Use Node.js 23.6
         uses: actions/setup-node@v3
