@@ -12,11 +12,11 @@ function LC() {
 function TC() {
   console.log("- A.3. Third Component");
 
-  const value = useContext(CreatedContext);
+  const { count } = useContext(CreatedContext);
 
   return (
     <div className="component-box" style={{ padding: 10 }}>
-      Third Component : {value.count}
+      Third Component : {count}
       <LC />
     </div>
   );
@@ -42,13 +42,16 @@ function FC() {
   );
 }
 
-function ButtonComponent({ onClick }) {
+function ButtonComponent() {
+  // 5. useContext에 생성한 컨텍스트 객체 넣어주어서 받은 value 꺼내옴.
+  const { setCount } = useContext(CreatedContext);
   console.log("- B. Button Component");
   return (
     <div className="component-box" style={{ padding: 10 }}>
       Button Component
       <div>
-        <button onClick={onClick}>증가</button>
+        {/* 6. 일반변수처럼 사용하면 됨 */}
+        <button onClick={() => setCount((prev) => prev + 1)}>증가</button>
       </div>
     </div>
   );
@@ -64,10 +67,26 @@ function NonContextComponent({ count }) {
 }
 
 // 1. contextAPI 사용할거라고 선언.
-const CreatedContext = createContext();
+const CreatedContext = createContext({
+  count: 0,
+  setCount: (state) => {},
+}); // default value
+// 2. 상태를 가지는 provider를 따로 컴포넌트화 (부모컴포넌트에 상태를 가지지 않게 하기 위함: )
+// 부모컴포넌트에 상태를 가지면 상태가 바뀔때마다 전체 리렌더링이 되기 때문
+
+function CountContextProvider({ children }) {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      {/* 3. provider에 하위컴포넌트에 쓰일 initial value 설정 */}
+      <CreatedContext.Provider value={{ count, setCount }}>
+        {children}
+      </CreatedContext.Provider>
+    </>
+  );
+}
 
 function UseContextResultComponent() {
-  const [count, setCount] = useState(0);
   return (
     <div
       className="section-box"
@@ -79,11 +98,13 @@ function UseContextResultComponent() {
         padding: 10,
       }}
     >
-      <CreatedContext.Provider value={{ count, setCount }}>
+      {/* 4. 프로바이더 적용 */}
+      <CountContextProvider>
         <FC />
-      </CreatedContext.Provider>
-      <ButtonComponent onClick={() => setCount((prev) => prev + 1)} />
-      <NonContextComponent count={count} />
+        <ButtonComponent />
+      </CountContextProvider>
+
+      <NonContextComponent />
     </div>
   );
 }
