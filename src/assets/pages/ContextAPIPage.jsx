@@ -355,6 +355,22 @@ function ContextAPIPage() {
         전역 상태를 사용하는 Consumer,
         <br />
       </section>
+
+      <section id="practiceBox">
+        <h3>useContext와 Consumer 사용 시 차이점이 있다. </h3>
+        <p>
+          useContext는 사용한 컴포넌트3도 콘솔에 찍히지만 Consumer는 사용한
+          컴포넌트3은 콘솔에 찍히지 않았다.{" "}
+        </p>
+        <p>
+          이는 useContext를 사용하는 컴포넌트는 Context를 직접 참조하므로,
+          React는 해당 컴포넌트가 변경 사항을 구독하고 있다고 판단
+        </p>
+        <p>
+          Context.Consumer는 React가 값을 변경했을 때 **최소한의 작업(Consumer
+          자식 함수만 실행)**만 수행하도록 설계되었다.
+        </p>
+      </section>
     </>
   );
 }
