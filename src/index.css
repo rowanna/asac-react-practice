@@ -56,6 +56,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+header h1 a {
+  color: #fefefe;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -68,15 +71,28 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+  header h1 a {
+    color: #5f5d5d;
+  }
 }
 #practiceBox {
   background-color: rgb(182, 182, 182);
   border-radius: 2%;
   box-shadow: 6px 5px 17px #5c5a5a;
+  padding: 30px 10px;
+  margin: 40px;
 }
 #practiceBox #resultBox {
-  display: flex;
+  /* display: flex;
   height: 30%;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; */
+}
+
+.component-box {
+  border: 2px solid orange;
+}
+
+.section-box {
+  border: 2px solid rgb(255, 224, 147);
 }
