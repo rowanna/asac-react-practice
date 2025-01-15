@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./assets/pages/Home";
 import UseReducerPage from "./assets/pages/UseReducerPage";
 import ContextAPIPage from "./assets/pages/ContextAPIPage";
+import ChangeThemePage from "./assets/pages/ChangeThemePage";
 
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} /> {/* 메인 페이지 */}
         <Route path="/useReducerPage" element={<UseReducerPage />} />{" "}
         <Route path="/ContextAPIPage" element={<ContextAPIPage />} />{" "}
+        <Route path="/ChangeThemePage" element={<ChangeThemePage />} />{" "}
       </Routes>
     </Router>
   );

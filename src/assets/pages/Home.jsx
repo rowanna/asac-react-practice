@@ -11,6 +11,9 @@ function PostList() {
       <button>
         <Link to="/contextAPIPage">contextAPI 실습 보기</Link>
       </button>
+      <button>
+        <Link to="/ChangeThemePage">ChangeThemePage 실습 보기</Link>
+      </button>
     </>
   );
 }

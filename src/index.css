@@ -30,6 +30,13 @@ body {
   min-height: 100vh;
 }
 
+body.light {
+  background-color: rgb(202, 202, 202);
+}
+body.dark {
+  background-color: rgb(60, 60, 60);
+}
+
 h1 {
   font-size: 1.6em;
   line-height: 1.1;
