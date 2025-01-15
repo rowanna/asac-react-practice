@@ -35,7 +35,7 @@ function ChangeThemeBtn({ children, type }) {
 
   return (
     <>
-      <ChangeThemeBtn onClick={onClick}>{children}</ChangeThemeBtn>
+      <button onClick={onClick}>{children}</button>
     </>
   );
 }
