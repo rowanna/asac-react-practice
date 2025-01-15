@@ -17,6 +17,8 @@ function ThemeContextProvider({ children }) {
   );
 }
 
+const mql = window.matchMedia("(prefers-color-scheme: dark)");
+
 function ChangeThemeBtn({ children, type }) {
   const { theme, setTheme } = useContext(ThemeContext);
 
@@ -28,6 +30,10 @@ function ChangeThemeBtn({ children, type }) {
     setTheme((prev) => type);
     localStorage.setItem("theme", type);
   };
+
+  mql.addEventListener("change", (e) => {
+    setTheme((prev) => (e.matches ? "dark" : "light"));
+  });
 
   useEffect(() => {
     document.body.className = theme;

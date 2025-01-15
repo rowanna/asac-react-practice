@@ -103,3 +103,9 @@ header h1 a {
 .section-box {
   border: 2px solid rgb(255, 224, 147);
 }
+
+#toggleMode {
+  position: absolute;
+  top: 1vh;
+  right: 1vw;
+}
