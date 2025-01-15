@@ -7,7 +7,17 @@ const ThemeContext = createContext({
 });
 
 function ThemeContextProvider({ children }) {
+  console.log("ThemeContextProvider", "=====");
   const [theme, setTheme] = useState("light");
+  const mql = window.matchMedia("(prefers-color-scheme: dark)");
+
+  mql.addEventListener("change", (e) => {
+    setTheme((prev) => (e.matches ? "dark" : "light"));
+  });
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   return (
     <>
       <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -17,10 +27,8 @@ function ThemeContextProvider({ children }) {
   );
 }
 
-const mql = window.matchMedia("(prefers-color-scheme: dark)");
-
 function ChangeThemeBtn({ children, type }) {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
 
   const onClick = () => {
     const isClickedCurrentMode =
@@ -30,14 +38,6 @@ function ChangeThemeBtn({ children, type }) {
     setTheme((prev) => type);
     localStorage.setItem("theme", type);
   };
-
-  mql.addEventListener("change", (e) => {
-    setTheme((prev) => (e.matches ? "dark" : "light"));
-  });
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
 
   return (
     <>
