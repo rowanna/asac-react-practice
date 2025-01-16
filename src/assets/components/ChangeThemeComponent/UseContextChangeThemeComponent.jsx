@@ -2,12 +2,12 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext({
   // 디폴트값
-  theme: "light",
+  theme: localStorage.getItem("theme") || "light",
   setTheme: () => {},
 });
 
 function ThemeContextProvider({ children }) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const mql = window.matchMedia("(prefers-color-scheme: dark)");
 
   mql.addEventListener("change", (e) => {
