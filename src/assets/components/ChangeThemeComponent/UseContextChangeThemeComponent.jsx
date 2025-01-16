@@ -7,7 +7,6 @@ const ThemeContext = createContext({
 });
 
 function ThemeContextProvider({ children }) {
-  console.log("ThemeContextProvider", "=====");
   const [theme, setTheme] = useState("light");
   const mql = window.matchMedia("(prefers-color-scheme: dark)");
 

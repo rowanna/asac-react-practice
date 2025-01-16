@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import CodeBlock from "../components/CodeBlock";
 import UseContextResultComponent from "../components/ContextAPIComponent/UseContextResultComponent";
 import ConsumerResultComponent from "../components/ContextAPIComponent/ConsumerResultComponent";
+import CustomModalResult from "../components/ContextAPIComponent/CustomModalResult";
 
 const practiceCode = `
 function LC() {
@@ -370,6 +371,15 @@ function ContextAPIPage() {
           Context.Consumer는 React가 값을 변경했을 때 **최소한의 작업(Consumer
           자식 함수만 실행)**만 수행하도록 설계되었다.
         </p>
+      </section>
+
+      <section id="practiceBox">
+        <h3>실습 19-2. useContext 통해 커스텀 dialog모달 출력</h3>
+        <div id="resultBox">
+          {/* <CodeBlock code={consumerResultCode} /> */}
+
+          <CustomModalResult />
+        </div>
       </section>
     </>
   );
