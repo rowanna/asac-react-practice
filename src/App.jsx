@@ -3,6 +3,7 @@ import Home from "./assets/pages/Home";
 import UseReducerPage from "./assets/pages/UseReducerPage";
 import ContextAPIPage from "./assets/pages/ContextAPIPage";
 import ChangeThemePage from "./assets/pages/ChangeThemePage";
+import ModalPage from "./assets/pages/ModalPage";
 
 import "./App.css";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/useReducerPage" element={<UseReducerPage />} />{" "}
         <Route path="/ContextAPIPage" element={<ContextAPIPage />} />{" "}
         <Route path="/ChangeThemePage" element={<ChangeThemePage />} />{" "}
+        <Route path="/ModalPage" element={<ModalPage />} />{" "}
       </Routes>
     </Router>
   );

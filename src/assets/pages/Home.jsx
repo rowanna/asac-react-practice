@@ -6,13 +6,19 @@ function PostList() {
     <>
       <h2>post list</h2>
       <button>
-        <Link to="/useReducerPage">useReducer실습 보기</Link>
+        <Link to="/useReducerPage">useReducer로 구현한 카운터 보기</Link>
       </button>
       <button>
-        <Link to="/contextAPIPage">contextAPI 실습 보기</Link>
+        <Link to="/contextAPIPage">
+          contextAPI로 전역상태 관리하는 컴포넌트 보기 <br />
+          (+ 어떻게 하면 필요한 컴포넌트만 렌더링할 수 있을까?)
+        </Link>
       </button>
       <button>
-        <Link to="/ChangeThemePage">ChangeThemePage 실습 보기</Link>
+        <Link to="/ChangeThemePage">Display Mode 바꾸는 컴포넌트 보기</Link>
+      </button>
+      <button>
+        <Link to="/ModalPage">다양한 Modal 컴포넌트 구현방법 보기</Link>
       </button>
     </>
   );
