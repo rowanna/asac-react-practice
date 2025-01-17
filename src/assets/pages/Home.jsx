@@ -20,6 +20,12 @@ function PostList() {
       <button>
         <Link to="/ModalPage">다양한 Modal 컴포넌트 구현방법 보기</Link>
       </button>
+      <button>
+        <Link to="/MemoPage">MemoPage</Link>
+      </button>
+      <button>
+        <Link to="/UseEffectPage">UseEffectPage</Link>
+      </button>
     </>
   );
 }

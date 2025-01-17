@@ -4,6 +4,8 @@ import UseReducerPage from "./assets/pages/UseReducerPage";
 import ContextAPIPage from "./assets/pages/ContextAPIPage";
 import ChangeThemePage from "./assets/pages/ChangeThemePage";
 import ModalPage from "./assets/pages/ModalPage";
+import MemoPage from "./assets/pages/MemoPage";
+import UseEffectPage from "./assets/pages/UseEffectPage";
 
 import "./App.css";
 
@@ -14,10 +16,12 @@ function App() {
     <Router basename={projectBasePath}>
       <Routes>
         <Route path="/" element={<Home />} /> {/* 메인 페이지 */}
-        <Route path="/useReducerPage" element={<UseReducerPage />} />{" "}
-        <Route path="/ContextAPIPage" element={<ContextAPIPage />} />{" "}
-        <Route path="/ChangeThemePage" element={<ChangeThemePage />} />{" "}
-        <Route path="/ModalPage" element={<ModalPage />} />{" "}
+        <Route path="/useReducerPage" element={<UseReducerPage />} />
+        <Route path="/ContextAPIPage" element={<ContextAPIPage />} />
+        <Route path="/ChangeThemePage" element={<ChangeThemePage />} />
+        <Route path="/ModalPage" element={<ModalPage />} />
+        <Route path="/MemoPage" element={<MemoPage />} />
+        <Route path="/UseEffectPage" element={<UseEffectPage />} />
       </Routes>
     </Router>
   );
