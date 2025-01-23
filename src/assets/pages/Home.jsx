@@ -26,6 +26,9 @@ function PostList() {
       <button>
         <Link to="/UseEffectPage">UseEffectPage</Link>
       </button>
+      <button>
+        <Link to="/bookShelvesPage">bookShelves 나만의 책장</Link>
+      </button>
     </>
   );
 }

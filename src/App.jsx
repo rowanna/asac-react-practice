@@ -6,6 +6,7 @@ import ChangeThemePage from "./assets/pages/ChangeThemePage";
 import ModalPage from "./assets/pages/ModalPage";
 import MemoPage from "./assets/pages/MemoPage";
 import UseEffectPage from "./assets/pages/UseEffectPage";
+import BookShelvesPage from "./assets/pages/BookShelves";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/ModalPage" element={<ModalPage />} />
         <Route path="/MemoPage" element={<MemoPage />} />
         <Route path="/UseEffectPage" element={<UseEffectPage />} />
+        <Route path="/bookShelvesPage" element={<BookShelvesPage />} />
       </Routes>
     </Router>
   );
