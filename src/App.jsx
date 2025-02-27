@@ -7,6 +7,7 @@ import ModalPage from "./assets/pages/ModalPage";
 import MemoPage from "./assets/pages/MemoPage";
 import UseEffectPage from "./assets/pages/UseEffectPage";
 import BookShelvesPage from "./assets/pages/BookShelves";
+import ReduxPage from "./assets/pages/ReduxPage";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/MemoPage" element={<MemoPage />} />
         <Route path="/UseEffectPage" element={<UseEffectPage />} />
         <Route path="/bookShelvesPage" element={<BookShelvesPage />} />
+        <Route path="/reduxPage" element={<ReduxPage />} />
       </Routes>
     </Router>
   );

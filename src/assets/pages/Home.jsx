@@ -29,6 +29,9 @@ function PostList() {
       <button>
         <Link to="/bookShelvesPage">bookShelves 나만의 책장</Link>
       </button>
+      <button>
+        <Link to="/reduxPage">redux보러가기</Link>
+      </button>
     </>
   );
 }
